@@ -1,6 +1,6 @@
-= Virtual DOM Handlebars
+# Virtual DOM Handlebars
 
-Compile [Handlebars](http://handlebarsjs.com/) to [Virtual DOM](https://github.com/Matt-Esch/virtual-dom).
+Compile [Handlebars](http://handlebarsjs.com/) templates to javascript that returns a [Virtual DOM](https://github.com/Matt-Esch/virtual-dom).
 
 Turn this:
 
@@ -23,7 +23,7 @@ into (essentially) this:
 	})
 
 
-== Compile Examples
+## Compile Examples
 
 Output compiled javascript to stdout
 
@@ -45,12 +45,12 @@ Gulp.js
 	coming soon...
 
 
-== Stability
+## Stability
 
 v0.0.1 Experimental
 
 
-== Roadmap
+## Roadmap
 
 * Escape output by default
 * Add support for `{{> partial}}` and `{{> (subexpression) otherContext}}`
@@ -59,11 +59,11 @@ v0.0.1 Experimental
 * Add support for `{{! comments }}`
 
 
-== Dependencies
+## Dependencies
 
 * [htmlparser2](https://github.com/fb55/htmlparser2)
 
-== Also See 
+## Also See 
 
 * [HTMLBars](https://github.com/tildeio/htmlbars)
 * [haml-coffee](https://github.com/netzpirat/haml-coffee)
