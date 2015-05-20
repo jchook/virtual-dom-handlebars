@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var root = path.dirname(require.main.filename);
+var compile = require(root + '/../compile');
+var content = [];
+var output = process.stdout;
+
+process.stdin.resume();
+process.stdin.on('data', function(buf){ content.push(buf); });
+process.stdin.on('end', function(){
+	output.write(compile(Buffer.concat(content).toString()));
+});
