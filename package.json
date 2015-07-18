@@ -1,6 +1,6 @@
 {
   "name": "virtual-dom-handlebars",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Compile Handlebars to Virtual DOM templates",
   "main": "index.js",
   "scripts": {
