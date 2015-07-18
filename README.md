@@ -14,10 +14,10 @@ Turn this:
 into (essentially) this:
 
 	(function(context) {
-		return [Vbars.callHelper('each', context.messages, {}, function(message, options){
-			return h('div', {className: 'mood-' + message.currentMood}, [
-				h('h1', message.title),
-				h('p', message.content)
+		return [Handlebars.callHelper('each', context.messages, {}, function(context, options){
+			return h('div', {className: 'mood-' + context.currentMood}, [
+				h('h1', context.title),
+				h('p', context.content)
 			]);
 		})];
 	})
@@ -47,16 +47,27 @@ Gulp.js
 
 ## Stability
 
-v0.0.1 Experimental
+Experimental
 
 
 ## Roadmap
 
 * Escape output by default
-* Add support for `{{> partial}}` and `{{> (subexpression) otherContext}}`
+* HTML attribute style arguments
+* Add support for `{{> (subexpression) otherContext}}`
 * Add support for `{{else helper context args}}`
 * Add support for `{{{no-escape}}}` content
 * Add support for `{{! comments }}`
+
+
+## Changelog
+
+### v0.0.2 Partials!
+
+Support for [partials](http://handlebarsjs.com/partials.html) with the format `{{> partialName [context] [args] }}`.
+
+
+### v0.0.1 Initial Release
 
 
 ## Dependencies

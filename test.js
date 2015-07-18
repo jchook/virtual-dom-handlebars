@@ -3,8 +3,8 @@ var
 	// Template (compile time)
 	Template = require('./lib/Template'),
 	
-	// VBars (runtime)
-	Vbars = require('./lib/Runtime'),
+	// Handlebars polyfill
+	Runtime = require('./lib/Runtime'),
 	
 	// VDOM (Thanks Matt Esch!!)
 	h = require('virtual-dom/h'),
@@ -22,11 +22,11 @@ var
 function compare(a, b) {
 	return _.isEqual(a, b);
 }
-function compile(handlebars) {
-	return eval(compileToString(handlebars));
+function compile(handlebarsString) {
+	return eval(compileToString(handlebarsString));
 }
-function compileToString(handlebars) {
-	return (new Template(handlebars)).toJavascript();
+function compileToString(handlebarsString) {
+	return (new Template(handlebarsString)).toJavascript();
 }
 function inspect(obj, config) {
 	config = _.extend({depth: null}, config);
@@ -171,3 +171,12 @@ test('handlebars section array', compare(
 	compile('{{#people}}<person>{{name}}</person>{{/people}}')({ people:[{name:'Douglas Hofstadter'}, {name:'Bertrand Russell'}, {name:'Alfred North Whitehead'}] }),
 	[h('person', 'Douglas Hofstadter'), h('person', 'Bertrand Russell'), h('person','Alfred North Whitehead')]
 ));
+
+// Partial
+Runtime.registerPartial('user', function(context){
+	return [h('h1', context.name), h('p', context.bio), h('hr')];
+});
+test('partial', compare(
+	compile('{{#users}}{{> user}}{{/users}}')({users: [{name:'Wes', bio:'Music. Design. Code. Repeat.'}, {name:'Michael', bio:'Cooking with robots.'}]}),
+	[h('h1', 'Wes'), h('p', 'Music. Design. Code. Repeat.'), h('hr'), h('h1', 'Michael'), h('p', 'Cooking with robots.'), h('hr')]
+))
