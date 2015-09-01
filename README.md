@@ -23,6 +23,28 @@ into (essentially) this:
 	})
 
 
+## Implementation
+
+The end-game is a set of javascript (.js) files that define functions that return a virtual-dom tree
+dictated by the corresponding handlebars template (and a provided context). First install.
+	
+	npm install --save virtual-dom-handlebars virtual-dom
+
+Compiled templates assume both a virutal-hyperscript `h()` function and a virtual-dom-handlebars `Runtime` 
+are defined. See an [example gulpfile.js](https://github.com/jchook/gulp-virtual-dom-handlebars) to learn how 
+to automate this file header.
+
+	var env = require('virtual-dom-handlebars');
+	var h = require('virtual-dom');
+
+Assign compiled templates (they're functions) to variables and call them to generate a virtual-dom tree.
+
+	var templates = [
+		'index': require('templates/compiled/index.js'),
+		'login': require('templates/compiled/login.js')
+	];
+
+
 ## Compile Examples
 
 Output compiled javascript to stdout
@@ -33,16 +55,14 @@ Compile a haml handlebars template to a javascript file
 
 	haml my-template.haml | vbars > my-template.js
 
-Use node to compile your handelbars
+Compile your handlebars with node
 
-	var compile = require('vbars/compile');
+	var compile = require('vitual-dom-handlebars/compile');
 	var javascript = compile('<h1>{{title}}</h1><p>{{message}}</p>');
-	var template = eval(javascript);
-	var vtree = template({ title:'Hello', message:'World' });
 
 Gulp.js
 
-	coming soon...
+	See [gulp-virtual-dom-handlebars](https://github.com/jchook/gulp-virtual-dom-handlebars).
 
 
 ## Stability
