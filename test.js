@@ -143,23 +143,23 @@ test(name, compare(
 
 test('variable interpolated in argument values', compare(
 	compile('<div id="task-{{id}}" class="type-{{type}}">{{message}}</div>')({id:5, type:'daily', message: 'Make Bed'}),
-	[h('div', {id:'task-5', 'class':'type-daily'}, 'Make Bed')]
+	[h('div', {id:'task-5', className:'type-daily'}, 'Make Bed')]
 ));
 
 test('block interpolated in argument values', compare(
 	compile('<div id="task-{{id}}" class="test {{#each types}}type-{{this}} {{/each}}">{{message}}</div>')({id:5, types:['daily', 'morning'], message: 'Make Bed'}),
-	[h('div', {id:'task-5', 'class':'test type-daily type-morning '}, 'Make Bed')]
+	[h('div', {id:'task-5', className:'test type-daily type-morning '}, 'Make Bed')]
 ));
 
 test('variable interpolated in tag names', compare(
 	compile('<{{tagname}} class="test">Hello World</{{tagname}}>')({tagname: 'div'}),
-	[h('div', {'class':'test'}, 'Hello World')]
+	[h('div', {className:'test'}, 'Hello World')]
 ));
 
 // This can never be supported with htmlparser2
 // test('block interpolated in tag names', compare(
 // 	compile('<{{#if tagname}}{{tagname}}{{/if}} class="test">Hello World</{{tagname}}>')({tagname: 'div'}),
-// 	[new VNode('div', {'class':'test'}, [new VText('Hello World')])]
+// 	[new VNode('div', {className:'test'}, [new VText('Hello World')])]
 // ));
 
 test('handlebars section object', compare(
