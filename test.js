@@ -180,3 +180,19 @@ test('partial', compare(
 	compile('{{#users}}{{> user}}{{/users}}')({users: [{name:'Wes', bio:'Music. Design. Code. Repeat.'}, {name:'Michael', bio:'Cooking with robots.'}]}),
 	[h('h1', 'Wes'), h('p', 'Music. Design. Code. Repeat.'), h('hr'), h('h1', 'Michael'), h('p', 'Cooking with robots.'), h('hr')]
 ))
+
+// Dynamic context
+test('dynamic context', compare(
+	compile('{{myFunction}}')({myFunction:function(){return 'test';}}),
+	['test']
+));
+
+test('dynamic context w/ moustache section', compare(
+	compile('{{#users}}{{name}}{{/users}}')({users:function(){ return [{name:'Wes'}, {name:'Pete'}]}}),
+	['Wes', 'Pete']
+));
+
+test('dynamic context w/ each helper', compare(
+	compile('{{#each users}}{{name}}{{/each}}')({users:function(){ return [{name:'Wes'}, {name:'Pete'}]}}),
+	['Wes', 'Pete']
+));
