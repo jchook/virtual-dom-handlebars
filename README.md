@@ -57,7 +57,7 @@ Compile a haml handlebars template to a javascript file
 
 Compile your handlebars with node
 
-	var compile = require('vitual-dom-handlebars/compile');
+	var compile = require('virtual-dom-handlebars/compile');
 	var javascript = compile('<h1>{{title}}</h1><p>{{message}}</p>');
 
 Gulp.js
