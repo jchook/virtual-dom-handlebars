@@ -27,11 +27,11 @@ into (essentially) this:
 
 The end-game is a set of javascript (.js) files that define functions that return a virtual-dom tree
 dictated by the corresponding handlebars template (and a provided context). First install.
-	
+
 	npm install --save virtual-dom-handlebars virtual-dom
 
-Compiled templates assume both a virutal-hyperscript `h()` function and a virtual-dom-handlebars `Runtime` 
-are defined. See an [example gulpfile.js](https://github.com/jchook/gulp-virtual-dom-handlebars) to learn how 
+Compiled templates assume both a virtual-hyperscript `h()` function and a virtual-dom-handlebars `Runtime`
+are defined. See an [example gulpfile.js](https://github.com/jchook/gulp-virtual-dom-handlebars) to learn how
 to automate this file header.
 
 	var env = require('virtual-dom-handlebars');
@@ -57,12 +57,12 @@ Compile a haml handlebars template to a javascript file
 
 Compile your handlebars with node
 
-	var compile = require('vitual-dom-handlebars/compile');
+	var compile = require('virtual-dom-handlebars/compile');
 	var javascript = compile('<h1>{{title}}</h1><p>{{message}}</p>');
 
 Gulp.js
 
-	See [gulp-virtual-dom-handlebars](https://github.com/jchook/gulp-virtual-dom-handlebars).
+See [gulp-virtual-dom-handlebars](https://github.com/jchook/gulp-virtual-dom-handlebars).
 
 
 ## Stability
@@ -94,7 +94,7 @@ Support for [partials](http://handlebarsjs.com/partials.html) with the format `{
 
 * [htmlparser2](https://github.com/fb55/htmlparser2)
 
-## Also See 
+## Also See
 
 * [HTMLBars](https://github.com/tildeio/htmlbars)
 * [haml-coffee](https://github.com/netzpirat/haml-coffee)
