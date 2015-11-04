@@ -14,7 +14,7 @@ Turn this:
 into (essentially) this:
 
 	(function(context) {
-		return [Handlebars.callHelper('each', context.messages, {}, function(context, options){
+		return [Runtime.callHelper('each', context.messages, {}, function(context, options){
 			return h('div', {className: 'mood-' + context.currentMood}, [
 				h('h1', context.title),
 				h('p', context.content)
@@ -34,35 +34,35 @@ Compiled templates assume both a virutal-hyperscript `h()` function and a virtua
 are defined. See an [example gulpfile.js](https://github.com/jchook/gulp-virtual-dom-handlebars) to learn how 
 to automate this file header.
 
-	var env = require('virtual-dom-handlebars');
+	var Runtime = require('virtual-dom-handlebars');
 	var h = require('virtual-dom');
 
 Assign compiled templates (they're functions) to variables and call them to generate a virtual-dom tree.
 
 	var templates = [
-		'index': require('templates/compiled/index.js'),
-		'login': require('templates/compiled/login.js')
+		index: require('templates/compiled/index.js'),
+		login: require('templates/compiled/login.js')
 	];
 
 
 ## Compile Examples
 
-Output compiled javascript to stdout
+**Output compiled javascript to stdout**
 
 	vbars < my-template.hbs
 
-Compile a haml handlebars template to a javascript file
+**Compile a haml handlebars template to a javascript file**
 
 	haml my-template.haml | vbars > my-template.js
 
-Compile your handlebars with node
+**Compile your handlebars with node**
 
 	var compile = require('virtual-dom-handlebars/compile');
 	var javascript = compile('<h1>{{title}}</h1><p>{{message}}</p>');
 
-Gulp.js
+**Gulp.js**
 
-	See [gulp-virtual-dom-handlebars](https://github.com/jchook/gulp-virtual-dom-handlebars).
+See [gulp-virtual-dom-handlebars](https://github.com/jchook/gulp-virtual-dom-handlebars).
 
 
 ## Stability
