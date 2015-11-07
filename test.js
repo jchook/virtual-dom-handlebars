@@ -13,6 +13,10 @@ var
 	_ = require('lodash'),
 	colors = require('colors'),
 	util = require('util'),
+
+	// Counters
+	passed = 0,
+	failed = 0,
 	
 	// Local vars
 	html, context, name
@@ -34,7 +38,8 @@ function inspect(obj, config) {
 	return obj;
 }
 function test(name, condition) {
-	console.log(condition ? 'pass'.green : 'fail'.red, "|", name);
+	var result = (condition ? (passed++, 'pass'.green) : (failed++, 'fail'.red)) + "|" + name.cyan;
+	console.log(result);
 }
 
 
@@ -196,3 +201,5 @@ test('dynamic context w/ each helper', compare(
 	compile('{{#each users}}{{name}}{{/each}}')({users:function(){ return [{name:'Wes'}, {name:'Pete'}]}}),
 	['Wes', 'Pete']
 ));
+
+console.log("Passed: " + ("" + passed).green, "| Failed: " + ("" + failed)[failed > 0 ? "red" : "green"]);
