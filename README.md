@@ -82,6 +82,12 @@ Experimental
 
 ## Changelog
 
+### v0.0.5 Bug Fix
+
+Important bug fix for adjacent blocks within a block. Thanks to 
+[vincentracine](https://github.com/vincentracine) for reporting it.
+
+
 ### v0.0.2 Partials!
 
 Support for [partials](http://handlebarsjs.com/partials.html) with the format `{{> partialName [context] [args] }}`.
