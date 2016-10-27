@@ -145,6 +145,42 @@ test(name, compare(
 	])]
 ));
 
+name = 'adjacent blocks within a block';
+context = {
+	activities: [
+		{id:1, title:"Morning Run", start:"08:00", finish:"08:20"},
+		{id:2, title:"Breakfast", start:"08:30", finish:"09:00"}
+	]
+};
+html = ''
+	+ '<ul>'
+		+ '{{#each activities}}'
+			+ '<li>'
+				+ '{{#if id}}'
+					+ '<div>{{../title}}</div>'
+					+ '<div>{{../start}}</div>'
+				+ '{{/if}}'
+				+ '{{#unless id}}'
+				+ '	<div>{{../title}}</div>'
+				+ '	<div>{{../start}}</div>'
+				+ '{{/unless}}'
+			+ '</li>'
+		+ '{{/each}}'
+	+ '</ul>';
+test(name, compare(
+	compile(html)(context),
+	[h('ul', [
+		h('li', [
+			h('div', 'Morning Run'),
+			h('div', '08:00')
+		]),
+		h('li', [
+			h('div', 'Breakfast'),
+			h('div', '08:30')
+		])
+	])]
+));
+
 
 test('variable interpolated in argument values', compare(
 	compile('<div id="task-{{id}}" class="type-{{type}}">{{message}}</div>')({id:5, type:'daily', message: 'Make Bed'}),
