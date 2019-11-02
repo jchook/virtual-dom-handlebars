@@ -27,8 +27,8 @@
     "htmlparser2": "~3.7.3"
   },
   "devDependencies": {
-    "virtual-dom": "~2.1.0",
-    "lodash": "~2.4.1",
-    "colors": "~0.6.2"
+    "colors": "~0.6.2",
+    "lodash": "^4.17.15",
+    "virtual-dom": "~2.1.0"
   }
 }
